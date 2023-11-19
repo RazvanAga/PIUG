@@ -1,0 +1,90 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+const { call_to_action } = Astro.props;
+---
+
+{
+  call_to_action.data.enable && (
+    <section class="mb-28">
+      <div class="container mx-auto">
+        <div class="rounded-xl bg-theme-light px-4 py-16 dark:bg-darkmode-theme-light xl:p-20">
+          <div class="">
+            <h2 set:html={markdownify(call_to_action.data.title)} class="mb-2" />
+            <p set:html={markdownify(call_to_action.data.description)} class="mb-6" />
+            <div class="overflow-x-auto w-full">
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mb-6">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      Plan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Features
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Price
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Essential Reader
+                    </th>
+                    <td class="px-6 py-4">
+                      - Monthly curated book selection<br>
+                      - Early releases and personalized recommendations<br>
+                      - Access to members-only events
+                    </td>
+                    <td class="px-6 py-4">
+                      $9.99/month
+                    </td>
+                  </tr>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Premium Explorer
+                    </th>
+                    <td class="px-6 py-4">
+                      - All Essential Reader benefits<br>
+                      - Limited edition books<br>
+                      - Invitations to virtual book club discussions and events<br>
+                      - Quarterly surprise book-related gifts
+                    </td>
+                    <td class="px-6 py-4">
+                      $19.99/month
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-800">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Ultimate Bibliophile
+                    </th>
+                    <td class="px-6 py-4">
+                      - All Premium Explorer benefits<br>
+                      - Priority access to rare and limited-edition releases<br>
+                      - Quarterly personalized book curation by our literary experts<br>
+                      - VIP invites to author meet-and-greets and literary festivals
+                    </td>
+                    <td class="px-6 py-4">
+                      $29.99/month
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {call_to_action.data.button.enable && (
+              <div class="mt-6">
+                <a class="btn btn-primary" href={call_to_action.data.button.link}>
+                  {call_to_action.data.button.label}
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+

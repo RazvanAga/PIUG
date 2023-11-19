@@ -1,0 +1,43 @@
+---
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+const about = await getEntry("about", "-index");
+const { Content } = await about.render();
+const { title, description, meta_title, videoUrl } = about.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+>
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="text-center md:col-10 lg:col-7">
+          <h2 set:html={markdownify(title)} class="h3 mb-6" />
+          <div class="content">
+            {videoUrl && (
+              <video
+                class="mx-auto mb-6 rounded-lg"
+                width="500"
+                height="280"
+                controls
+              >
+                <source
+                  src={videoUrl.match(/^http/) ? videoUrl : `/${videoUrl}`}
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            )}
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

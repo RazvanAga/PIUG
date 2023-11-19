@@ -1,0 +1,46 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    
+    {
+      "name": "Menu",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Books",
+          "url": "/blog"
+        },
+        {
+          "name": "Categories",
+          "url": "/categories"
+        },
+        {
+          "name": "Search",
+          "url": "/search"
+        },
+        {
+          "name": "Contact",
+          "url": "/contact"
+        },
+        {
+          "name": "Coming Soon",
+          "url": "/404"
+        }
+      ]
+    }
+  ],
+  "footer": [
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    }
+  ]
+}
